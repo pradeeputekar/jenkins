@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage("compile") {
+        stage('compile') {
             steps {
                 bat 'javac Jenkin.java'
             }
         }
-        stage("run") {
+        stage('run') {
             steps {
                 bat 'java Jenkin'
             }
@@ -14,7 +14,10 @@ pipeline {
     }
     post {
         success {
-            bat 'build success'
+            bat 'echo Build success'
+        }
+        failure {
+            bat 'echo Build failure'
         }
     }
 }
